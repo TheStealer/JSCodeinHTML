@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probando js in html</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <h1>Hola usuario</h1>
+    <h2>Presiona el botón para agregar un elemento a pantalla</h2>
+    <button type="button" onclick="suma" name="btn">
+        Click me to display problem</button>
+    <button type="button" onclick="validar" name="btn-check">
+        Click me to check your answer.</button>
+    <input type="text" name="answer">
+    <h1 id="problem"></h1>
+    <script>
+        const btn = document.getElementsByName('btn')[0];
+        const btn2 = document.getElementsByName('btn-check')[0];
+        const answer = document.getElementsByName('answer')[0];
+        const problem = document.getElementById('problem');
+
+        btn.addEventListener('click', suma)
+        btn2.addEventListener('click', validar)
+
+        function suma() {
+            let rnd = Math.floor(Math.random() * 101);
+            let rnd2 = Math.floor(Math.random() * 101);
+            problem.innerHTML = `La suma de ${rnd} y ${rnd2} es`;
+            respuesta = rnd + rnd2;
+            return respuesta;
+        };
+
+        function validar(rnd, rnd2) {
+            let useranswer = answer.value;
+            let correct = respuesta;
+            if (useranswer == correct) {
+                suma();
+                answer.value = "";
+            }
+            else {
+                alert('Respuesta incorrecta');
+            }
+        };
+    </script>
+
+</body>
+
+</html>
